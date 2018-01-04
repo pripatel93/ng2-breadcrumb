@@ -7,23 +7,23 @@ import { BreadcrumbService } from './breadcrumb.service';
  */
 var BreadcrumbComponent = (function () {
     function BreadcrumbComponent(router, breadcrumbService) {
+        var _this = this;
+        this._urls = new Array();
         this.router = router;
         this.breadcrumbService = breadcrumbService;
         this.useBootstrap = true;
         this.prefix = '';
-    }
-    BreadcrumbComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this._urls = new Array();
-        if (this.prefix.length > 0) {
-            this._urls.unshift(this.prefix);
-        }
         this._routerSubscription = this.router.events.subscribe(function (navigationEnd) {
             if (navigationEnd instanceof NavigationEnd) {
                 _this._urls.length = 0; //Fastest way to clear out array
                 _this.generateBreadcrumbTrail(navigationEnd.urlAfterRedirects ? navigationEnd.urlAfterRedirects : navigationEnd.url);
             }
         });
+    }
+    BreadcrumbComponent.prototype.ngOnInit = function () {
+        if (this.prefix.length > 0) {
+            this._urls.unshift(this.prefix);
+        }
     };
     BreadcrumbComponent.prototype.ngOnChanges = function (changes) {
         if (!this._urls) {
