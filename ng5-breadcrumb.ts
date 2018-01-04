@@ -1,3 +1,3 @@
-export {Ng5BreadcrumbModule} from './app/app.module';
-export {BreadcrumbComponent} from './app/components/breadcrumb';
-export {BreadcrumbService} from './app/components/breadcrumbService';
+export {Ng5BreadcrumbModule} from './src/app/components/breadcrumb/breadcrumb.module';
+export {BreadcrumbComponent} from './src/app/components/breadcrumb/breadcrumb.component';
+export {BreadcrumbService} from './src/app/components/breadcrumb/breadcrumb.service';
